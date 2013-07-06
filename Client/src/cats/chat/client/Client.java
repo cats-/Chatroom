@@ -116,6 +116,8 @@ public class Client extends JFrame implements ServerConstants, ActionListener, C
             final String text = chatBox.getText().trim();
             if(text.isEmpty())
                 return;
+            if(connection.isClosed())
+                return;
             try{
                 connection.send(String.format("%s: %s", name, text));
             }catch(Exception ex){
