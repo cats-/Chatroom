@@ -74,7 +74,7 @@ public class Client extends JFrame implements ServerConstants, ActionListener, C
     }
 
     public void onConnectionClosed(final ConnectionEvent e){
-
+        append("Connection closed; you are no longer connected");
     }
 
     public void onMessageReceived(final ConnectionEvent e){

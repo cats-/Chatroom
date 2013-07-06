@@ -265,7 +265,13 @@ public class Server extends JFrame implements ActionListener, Runnable, ServerCo
             final int index = list.getSelectedIndex();
             if(index < 0)
                 return;
-            list.removeConnection(list.model.get(index));
+            final Connection connection = list.model.get(index);
+            try{
+                connection.close();
+                list.removeConnection(connection);
+            }catch(IOException ex){
+                ex.printStackTrace();
+            }
         }else if(source.equals(sendItem)){
             final int index = list.getSelectedIndex();
             if(index < 0)
